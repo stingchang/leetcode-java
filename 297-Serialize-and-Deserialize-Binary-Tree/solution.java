@@ -31,8 +31,10 @@ public class Codec {
         while(!queue.isEmpty()){
             if(queue.getFirst() instanceof TreeNode){
                 TreeNode cur = (TreeNode)queue.removeFirst();
-                queue.addLast(cur.left);
-                queue.addLast(cur.right);
+                if(cur.left!=null)
+                    queue.addLast(cur.left);
+                if(cur.right!=null)
+                    queue.addLast(cur.right);
                 sb.append(cur.val);
                 
             } else {
