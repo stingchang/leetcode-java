@@ -33,7 +33,7 @@ public class Codec {
             if(cur instanceof TreeNode){
                 queue.addLast(((TreeNode)cur).left);
                 queue.addLast(((TreeNode)cur).right);
-                sb.append(cur.val);
+                sb.append(((TreeNode)cur).val);
                 
             } else {
                 sb.append(end);
