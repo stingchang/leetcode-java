@@ -19,7 +19,7 @@ public class Codec {
 
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
-        Deque<TreeNode> queue = new ArrayDeque<>();
+        Deque<Object> queue = new ArrayDeque<>();
         StringBuilder sb = new StringBuilder();
         if(root == null){
             sb.append(end);
@@ -30,7 +30,7 @@ public class Codec {
         
         while(!queue.isEmpty()){
             TreeNode cur = queue.removeFirst();
-            if(cur!=null){
+            if(cur instanceof TreeNode){
                 queue.addLast(cur.left);
                 queue.addLast(cur.right);
                 sb.append(cur.val);
