@@ -29,7 +29,7 @@ public class Codec {
         queue.addLast(root);
         
         while(!queue.isEmpty()){
-            TreeNode cur = queue.removeFirst();
+            Object cur = queue.removeFirst();
             if(cur instanceof TreeNode){
                 queue.addLast(cur.left);
                 queue.addLast(cur.right);
