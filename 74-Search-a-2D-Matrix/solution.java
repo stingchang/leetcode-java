@@ -1,8 +1,8 @@
 public class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
-        if(matrix == null || matrix.length == 0 || matrix[0]==0)
+        if(matrix == null || matrix.length == 0 || matrix[0].length==0)
             return false;
-        binarySearch(matrix, target, matrix[0].length, 0, 0);
+        binarySearch(matrix, target, matrix[0].length, 0, matrix[0].length* matrix.length-1);
     }
     
     public boolean binarySearch(int arr[][], int target, int len, int a, int b){
