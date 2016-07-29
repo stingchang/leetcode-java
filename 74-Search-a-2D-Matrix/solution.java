@@ -5,7 +5,7 @@ public class Solution {
         binarySearch(matrix, target, matrix[0].length, 0, matrix[0].length* matrix.length-1);
     }
     
-    public boolean binarySearch(int arr[][], target, int len, int a, int b){
+    public boolean binarySearch(int arr[][], int target, int len, int a, int b){
         if(b<a) 
             return false;
         int mid = a+(b-a)/2;
