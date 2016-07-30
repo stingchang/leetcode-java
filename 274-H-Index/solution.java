@@ -1,21 +1,19 @@
 import java.util.Collections;
 public class Solution {
     public int hIndex(int[] citations) {
-        
-        //Arrays.sort(citations, Collections.reverseOrder());
-        //[6,5,3,1,0]
-        //[1,2,3,4,5]
-        if(citations == null) return 0;
-        Arrays.sort(citations);
-        int len = citations.length;
-        
-       // citation[0 1]
-        //index   [0 1]
-        int max =0;
-        for(int i =len-1; i>=0; i--){
-            if(len-i-1<=citations[i] && citations[i]>0)
-                max = ++;
+        if(citations == null)
+            return 0;
+        int len = citations.length;    
+        // create an array of citations, if citation larger than length, treat it as length
+        int[] cites = new int[len+1];
+        Arrays.fill(cites, 0);
+        for(int i =0; i< len; i++){
+            cites[Math.min(len, citations[i])] +=1;
         }
-        return max;
-    }
+        
+        for(int i =1; i< cites.length; i++){
+            if(cites[i]<i)
+                return i-1;
+        }
+        return 0;
 }
