@@ -9,12 +9,12 @@ public class Solution {
         Arrays.sort(citations);
         int len = citations.length;
         
-        citation[0 1]
-        index   [0 1]
+       // citation[0 1]
+        //index   [0 1]
         int max =0;
-        for(int i =0; i< len; i++){
-            if(i+1<=citations[i])
-                max++;
+        for(int i =len-1; i>=0; i--){
+            if(len-i-1<=citations[i] && citations[i]>0)
+                max = ++;
         }
         return max;
     }
