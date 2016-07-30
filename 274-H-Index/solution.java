@@ -1,14 +1,14 @@
 import java.util.Collections;
 public class Solution {
     public int hIndex(int[] citations) {
-        Arrays.sort(citations, Collections.reverseOrder());
+        Arrays.sort(citations);
         //Arrays.sort(citations, Collections.reverseOrder());
-        int max = 0;
-        for(int i =0; i< citations.length; i++){
-            if(i+1 <= citations[i])
-                max = i+1;
-            else 
-                return max;
+        //[6,5,3,1,0]
+        //[1,2,3,4,5]
+        int max = 5;
+        for(int i =len-1; i>=0; i--){
+            if(i+1<=citations[i])
+                return i+1;
         }
         return 0;
     }
