@@ -1,3 +1,4 @@
+import java.util.Collections;
 public class Solution {
     public int hIndex(int[] citations) {
         Arrays.sort(citations, Collections.reverseOrder());
