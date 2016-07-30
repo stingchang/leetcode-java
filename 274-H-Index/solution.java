@@ -14,13 +14,12 @@ public class Solution {
         for(int i = cites.length-2; i>=0; i--){
             cites[i]+=cites[i+1];
         }
-        System.out.println(Arrays.toString(cites));
+       
         int max = 0;
         for(int i =1; i< cites.length; i++){
             if(cites[i]>=i)
                 max=i;
         }
-       // System.out.printlnl(Arrays.toString(cites));
         return max;
         
     }
