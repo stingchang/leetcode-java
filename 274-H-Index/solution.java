@@ -1,6 +1,6 @@
 public class Solution {
     public int hIndex(int[] citations) {
-        Arrays.sort(citataions, Collections.reverseOrder());
+        Arrays.sort(citations, Collections.reverseOrder());
         int max = 0;
         for(int i =0; i< citations.length; i++){
             if(i+1 <= citations[i])
