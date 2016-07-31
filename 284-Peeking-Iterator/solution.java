@@ -20,12 +20,12 @@ class PeekingIterator implements Iterator<Integer> {
 	@Override
 	public Integer next() {
 	    Integer i = cur;
-	    cur = iterator.next();
+	    cur = iterator.hasNext()?iterator.next():null;
 	    return i;
 	}
 
 	@Override
 	public boolean hasNext() {
-	    return iterator.hasNext() || cur == null;
+	    return iterator.hasNext() || cur != null;
 	}
 }
