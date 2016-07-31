@@ -6,7 +6,7 @@ class PeekingIterator implements Iterator<Integer> {
     
 	public PeekingIterator(Iterator<Integer> iterator) {
 	    // initialize any member here.
-	    this.iterator = iterator();
+	    this.iterator = iterator;
 	    cur = iterator.hasNext()?iterator.next():null;
 	}
 
