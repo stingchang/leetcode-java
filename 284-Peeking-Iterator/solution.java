@@ -21,6 +21,7 @@ class PeekingIterator implements Iterator<Integer> {
 	public Integer next() {
 	    Integer i = cur;
 	    cur = iterator.next();
+	    return i;
 	}
 
 	@Override
