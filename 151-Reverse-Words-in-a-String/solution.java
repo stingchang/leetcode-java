@@ -1,5 +1,7 @@
 public class Solution {
     public String reverseWords(String s) {
+        if(s.length() == 0)
+			return s;
         char[] arr = s.toCharArray();
         int a = 0, b = arr.length-1;
         // "  xxxx xx x xx ", reverse sub array between front and end spaces
