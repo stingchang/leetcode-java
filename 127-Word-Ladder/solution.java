@@ -35,8 +35,8 @@ public class Solution {
 	
 							// System.out.println("newStr = "+newStr);
 							if (wordList.contains(newStr)) {
-//								if (newStr.equals( end))
-//									return level+1;
+								if (newStr.equals( end))
+									return level+1;
 								nextlevel.add(newStr);
 								wordList.remove(newStr);
 							}
