@@ -10,7 +10,7 @@ public class Solution {
 			wordList.remove(beginWord);
 		}
 		while (!visiting.isEmpty()) {
-			dfs(visiting, wordList);
+			dfs(visiting, wordList, endWord);
 			depth++;
 			if (visiting.contains(endWord))
 				return depth;
@@ -19,7 +19,7 @@ public class Solution {
 		return 0;
 	}
 
-	void dfs(Set<String> visiting, Set<String> wordList) {
+	void dfs(Set<String> visiting, Set<String> wordList, String end) {
 
 		Set<String> nextlevel = new HashSet<>();
 
@@ -32,6 +32,8 @@ public class Solution {
 
 					if (c != cur) {
 						String newStr = s.substring(0, i) + c + s.substring(i + 1);
+						if(newStr == end)
+							return;
 //						System.out.println("newStr = "+newStr);						
 						if (wordList.contains(newStr)) {
 							nextlevel.add(newStr);
