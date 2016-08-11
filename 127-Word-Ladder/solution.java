@@ -1,5 +1,5 @@
 public class Solution {
- public int ladderLength(String beginWord, String endWord, Set<String> wordList) {
+ 	public int ladderLength(String beginWord, String endWord, Set<String> wordList) {
 		if (beginWord == endWord)
 			return 1;
 		if(wordList.contains(beginWord))
@@ -17,26 +17,30 @@ public class Solution {
 	int dfs(Set<String> visiting, Set<String> wordList, String end, int level) {
 		
 		
-		Set<String> nextlevel = new HashSet<>();
+		
 		while (!visiting.isEmpty()) {
 			level++;
 //		System.out.println(visiting.contains(end)+" "+visiting);
 			if(visiting.contains(end))
 				return level;
+			Set<String> nextlevel = new HashSet<>();
 			for (String s : visiting) {
+				char[] charArr = s.toCharArray();
 				for (int i = 0; i < s.length(); i++) {
-					char cur = s.charAt(i);
+					char cur = charArr[i];
 					// for(int i =0; i< 26; i++){
-					for (int j = 0; j < 26; j++) {
-						char c = (char) ('a' + j);
-
-						if (c != cur) {
-							String newStr = s.substring(0, i) + c + s.substring(i + 1);
-	
+					for (char j = 'a'; j <= 'z'; j++) {
+//						char c = (char) ('a' + j);
+						
+						if (j != charArr[i]) {
+							char[] charArr2 = charArr.clone();
+							charArr2[i]=j;
+							String newStr = new String(charArr2);
+							if (newStr.equals( end))
+								return level+1;
 							// System.out.println("newStr = "+newStr);
 							if (wordList.contains(newStr)) {
-								if (newStr.equals( end))
-									return level+1;
+//								
 								nextlevel.add(newStr);
 								wordList.remove(newStr);
 							}
@@ -45,11 +49,12 @@ public class Solution {
 
 				}
 			}
-			visiting.clear();
+			visiting = new HashSet<>();
 			visiting.addAll(nextlevel);
-			nextlevel.clear();
+//			nextlevel.clear();
 		}
 
 		return 0;
 	}
+
 }
