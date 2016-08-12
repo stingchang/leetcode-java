@@ -1,5 +1,6 @@
 public class Solution {
     public String reverseWords(String s) {
+        s = s.trim();
 		String[] arr = s.split("\\s+");
 		if(arr.length ==0)
 		    return "";
@@ -11,7 +12,7 @@ public class Solution {
 			}
 		}
 
-		return sb.reverse();
+		return sb.reverse().toString();
 	}
 	String reverse(String s){
 		char[] arr = s.toCharArray();
