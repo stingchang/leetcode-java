@@ -1,45 +1,21 @@
 public class Solution {
-   s = s.trim();
-		System.out.println("\""+s+"\"");
-		int len = s.length() ;
-		
+    public String reverseWords(String s) {
+		String[] arr = s.split("\\s+");
+		StringBuilder sb = new StringBuilder();
+		for(String st: arr){
+			sb.append(reverse(st)+ " ");
+		}
+
+		return sb.reverse().substring(1);
+	}
+	String reverse(String s){
 		char[] arr = s.toCharArray();
-		int a = 0, b = len - 1;
-		// " xxxx xx x xx ", reverse sub array between front and end spaces
-		// " xx x xx xxxx "
-		while (a<len && arr[a] == ' ') {
-			a++;
-		}
-
-		while (b>=0 && arr[b] == ' ') {
-			b--;
-		}
-		if(a>=b)
-			return s;
-		reverse(arr, a, b);
-
-		// " 123 12 1 123" reverse each sub string
-		// " 321 21 1 321"
-		int c = a;
-		while (a < b) {
-			while (c < b && arr[c] != ' ') {
-				c++;
-			}
-			reverse(arr, a, c-1);
-			a = c + 1;
-			while (a < b && arr[a] == ' ') {
-				a++;
-			}
+		int a =0, b = arr.length-1;
+		while(a<b){
+			char c = arr[a];
+			arr[a] = arr[b];
+			arr[b] = c;
 		}
 		return new String(arr);
-    }
-    void reverse(char[] arr, int a, int b){
-        while(a<b){
-            char tmp = arr[a];
-            arr[a] = arr[b];
-            arr[b] = tmp;
-            a++;
-            b--;
-        }
-    }
+	}
 }
