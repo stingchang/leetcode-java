@@ -5,13 +5,13 @@ public class Solution {
 		    return "";
 		StringBuilder sb = new StringBuilder();
 		for(int i =0; i< arr.length; i++){
-			sb.append(reverse(st));
+			sb.append(reverse(arr[i]));
 			if(i<arr.length-1){
-			sb.append(" ");    
+			    sb.append(" ");    
 			}
 		}
 
-		return sb.reverse().substring(1);
+		return sb.reverse();
 	}
 	String reverse(String s){
 		char[] arr = s.toCharArray();
