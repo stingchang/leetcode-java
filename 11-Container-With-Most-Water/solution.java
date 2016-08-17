@@ -13,7 +13,7 @@ public class Solution {
             }
             int volR = Math.abs(height[a]-height[b2]) * (b2-a);
             
-            int b2 = a;
+            int a2 = a;
             while(a2<b && height[a2]<=height[a]){
                 a2++;
             }
