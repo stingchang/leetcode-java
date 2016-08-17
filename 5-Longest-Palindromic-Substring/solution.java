@@ -17,10 +17,17 @@ public class Solution {
         
         // maxLength track longest width excluding center-> abcba = 2
         // maxMid track the center character 
-        int maxWidth =1, maxMid =0;
+        int maxWidth =0, maxMid =0;
         for(int i = 0; i<c.length; i++){
         	int max = longestPalindromeHelper(i, c);
+        	System.out.println("cen = "+i+", wid = "+max);
+        	
         	if(max>maxWidth){
+        		maxWidth = max;
+        		maxMid =i;
+        	} 
+        	// pick "a.a" over ".a." 
+        	else if(max==maxWidth && i%2 ==1){
         		maxWidth = max;
         		maxMid =i;
         	}
@@ -42,7 +49,7 @@ public class Solution {
         	
         	String right = sb.toString();
         	String left = sb.reverse().toString();
-        	String whole = left+c[maxMid]+right;
+        	String whole = left+right;
 //        	
 //        	System.out.println("case 1: "+whole);
 //        	
@@ -70,11 +77,14 @@ public class Solution {
 	public int longestPalindromeHelper(int center, char[] arr){
 		
 		int i = 0;
-		while(center-i>=0 && center+1<=arr.length-1){
-			if(arr[center-i]!=arr[center+i]){
-				return i;
+		while(center-i>=0 && center+i<=arr.length-1){
+//			System.out.println("center = "+center+", i = "+i);
+			if(arr[center-i]==arr[center+i]){
+//				return i;
+				i++;
 			}
-			i++;
+			else 
+				break;
 		}
 		
 		return i-1;
