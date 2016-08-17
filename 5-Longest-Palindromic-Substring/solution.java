@@ -20,7 +20,7 @@ public class Solution {
         int maxWidth =0, maxMid =0;
         for(int i = 0; i<c.length; i++){
         	int max = longestPalindromeHelper(i, c);
-        	System.out.println("cen = "+i+", wid = "+max);
+        // 	System.out.println("cen = "+i+", wid = "+max);
         	
         	if(max>maxWidth){
         		maxWidth = max;
@@ -33,7 +33,7 @@ public class Solution {
         	}
         }
         
-        System.out.println("maxWidth = "+maxWidth+", maxMid =" + maxMid+" "+Arrays.toString(c));
+        // System.out.println("maxWidth = "+maxWidth+", maxMid =" + maxMid+" "+Arrays.toString(c));
         // now we need to find out whether center character was inserted by us or not
         // -> characters at odd indices were inserted afterward
         // if maxMid is odd -> x.b.a.a.b.y
