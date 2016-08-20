@@ -77,4 +77,18 @@ public class LRUCache {
 			tail.post = null;
 		}
 	}   
+	
+	class Node {
+		Node pre;
+		Node post;
+		int key;
+		int value;
+
+		public Node(int key, int value) {
+			this.key = key;
+			this.value = value;
+			pre = post = null;
+		}
+
+	}
 }
