@@ -3,7 +3,7 @@ public class LRUCache {
 	private HashMap<Integer, Node> map;
 	private Node head, tail;
 
-	public Q146_LRUCache(int capacity) {
+	public LRUCache(int capacity) {
 		maxSize = capacity;
 		head = tail = null;
 	}
