@@ -18,8 +18,6 @@ public class Solution {
 		Random r = new Random();
 		for(; len>0; len--){
 			int randomLoc = r.nextInt(len);
-//			System.out.println(randomLoc);
-			// swap len and randomLoc
 			int tmp = newArr[len-1];
 			newArr[len-1] = newArr[randomLoc]; 
 			newArr[randomLoc] = tmp;
