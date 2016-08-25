@@ -4,8 +4,8 @@ public class Solution {
         // 2. pop up characters from queue until current character appears only once
         
         Map<Character, Integer> map  = new HashMap<>();
-        Queue<Character, Integer> queue  = new LinkedList<>();
-        for(int i =0; i< s.length()-1; i++){
+        Queue<Character> queue  = new LinkedList<>();
+        for(int i =0; i< s.length(); i++){
             char c = s.charAt(i);
             if(map.containsKey(c)){
               map.put(c, map.get(c)+1);
