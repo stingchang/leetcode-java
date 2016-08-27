@@ -1,75 +1,112 @@
 public class Solution {
-    public boolean isValidSudoku(char[][] board) {
-        for(int i =0; i<9; i++){
-            if(checkRow(board, i) == false){
-                System.out.println("check row "+i+" failed");
-                return false;
-            }
-                
-        }
-        for(int i =0; i<9; i++){
-            if(checkCol(board, i) == false){
-                System.out.println("check col "+i+" failed");
-                return false;
-            }
-        }
-        for(int i =0; i<8; i+=3){
-            for(int j=0; j<8; j+=3){
-                if(checkBoard(board, i, j) ==false){
-                    System.out.println("check board failed: "+i+", "+j);  
-                    return false;
-                }
-            }            
-        }
+  public boolean isValidSudoku(char[][] board) {
+		return checkMatrix(board) && checkRows(board) && checkCols(board);
+	}
 
-        return true;
-    }
-    private boolean checkRow(char[][] board, int row){
-        System.out.println("row "+row+" = "+Arrays.toString(board[row]));
-        Set<Character> set = new HashSet<>();
-        for(int c =0; c< 9; c++){
-            char ch = board[row][c];
-            if(set.contains(ch) && ch!='.'){
-               // System.out.println("return here");
-                return false;
-            }
-                
-            if(('9'-ch < 0 && ch-'1' >8) && (ch != '.')){
-            //    System.out.println("return here 2");
-                return false;
-            }
-                
-            set.add(ch);
-        }
-        
-        return true;
-    }
-    private boolean checkCol(char[][] board, int col){
-        Set<Character> set = new HashSet<>();
-        for(int r =0; r< 9; r++){
-            char ch = board[r][col];
-            if(set.contains(ch) && ch!='.')
-                return false;
-            if(('9'-ch < 0 && ch-'1' >8) && (ch != '.'))
-                return false;
-            set.add(ch);
-        } 
-        
-        return true;
-    }
-    private boolean checkBoard(char[][] board, int row, int col){
-        Set<Character> set = new HashSet<>();
-        for(int r = 0; r<3; r++){
-            for(int c = 0; c<3; c++){
-                char ch = board[r+row][c+col];
-                if(set.contains(ch) && ch!='.')
-                    return false;
-                if(('9'-ch < 0 && ch-'1' >8) && (ch != '.'))
-                    return false;
-                set.add(ch);
-            }    
-        }
-        
-        return true;
-    }
+	boolean checkMatrix(char[][] board) {
+
+		// 00 03 06
+		// 30 33 36
+		// 60 63 66
+
+		// c =0, 3, 6
+		for (int cc = 0; cc <= 6; cc += 3) {
+			for (int rr = 0; rr <= 6; rr += 3) {
+
+				// each 3x3 sub matrix
+				Set<Character> set = new HashSet<>();
+				for (int r = 0; r < 3; r++) {
+					for (int c = 0; c < 3; c++) {
+
+						char cur = board[r + rr][c + cc];
+
+						if (set.contains(cur)) {
+//							System.out.println("here");
+							return false;
+						}
+						if (notValidNum(cur)){
+//							System.out.println("here "+cur);
+							return false;
+						}
+							
+						if (cur != '.')
+							set.add(cur);
+					}
+				}
+			}
+		}
+		return true;
+	}
+
+	boolean checkRows(char[][] board) {
+
+		for (int r = 0; r < board.length; r++) {
+			Set<Character> set = new HashSet<>();
+			for (int c = 0; c < board[0].length; c++) {
+				char cur = board[r][c];
+
+				if (set.contains(cur)) {
+
+					return false;
+				}
+
+				if (notValidNum(cur)) {
+
+					return false;
+				}
+
+				if (cur != '.')
+					set.add(cur);
+			}
+		}
+
+		return true;
+
+	}
+
+	boolean checkCols(char[][] board) {
+
+		for (int c = 0; c < board[0].length; c++) {
+			Set<Character> set = new HashSet<>();
+			for (int r = 0; r < board.length; r++) {
+				char cur = board[r][c];
+
+				if (set.contains(cur)) {
+					// System.out.println("here");
+					return false;
+				}
+
+				if (notValidNum(cur)) {
+
+					return false;
+				}
+
+				if (cur != '.')
+					set.add(cur);
+			}
+		}
+
+		return true;
+	}
+
+	boolean notValidNum(char c) {
+		if (c - '1' >= 0 || '9' - c <= 0 || c=='.')
+			return false;
+		return true;
+	}
+
+	public static void main(String[] args) {
+		String[] strins = { ".87654321", "2........", "3........", "4........", "5........", "6........", "7........",
+				"8........", "9........" };
+		char[][] board = new char[9][9];
+		for (int i = 0; i < 9; i++) {
+			board[i] = strins[i].toCharArray();
+			System.out.println(Arrays.toString(board[i]));
+		}
+
+		Q036_ValidSudoku2 q = new Q036_ValidSudoku2();
+		boolean b = q.isValidSudoku(board);
+		System.out.println(b);
+
+	}
 }
