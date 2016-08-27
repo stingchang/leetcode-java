@@ -8,10 +8,10 @@ public class Solution {
         f(4) = (f(3)*f(0)) + (f(2)*f(1)) + (f(1)*f(2)) + (f(0)*f(3)) = 14;
         f(n) = (f(n-1)*f(0)) + (f(n-2)*f(1)) +...+ (f(1)*f(n-2)) + (f(0)*f(n-1)) ;
         */
-        if(t<=0)
+        if(n<=0)
             return 0;
             
-        if(t==1)
+        if(n==1)
             return 1;
         
         int[] t = new int[n+1];
