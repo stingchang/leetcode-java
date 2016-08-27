@@ -15,7 +15,7 @@ public class Solution {
 		if(cur == 0){
 			lists.add(newList);
 		}
-		else if(cur > 0){
+		else if(cur < 0){
 			return;
 		} else {
 			builLists(a,i,target, list, lists);
