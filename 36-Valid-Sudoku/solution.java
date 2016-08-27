@@ -95,18 +95,18 @@ public class Solution {
 		return true;
 	}
 
-	public static void main(String[] args) {
-		String[] strins = { ".87654321", "2........", "3........", "4........", "5........", "6........", "7........",
-				"8........", "9........" };
-		char[][] board = new char[9][9];
-		for (int i = 0; i < 9; i++) {
-			board[i] = strins[i].toCharArray();
-			System.out.println(Arrays.toString(board[i]));
-		}
+// 	public static void main(String[] args) {
+// 		String[] strins = { ".87654321", "2........", "3........", "4........", "5........", "6........", "7........",
+// 				"8........", "9........" };
+// 		char[][] board = new char[9][9];
+// 		for (int i = 0; i < 9; i++) {
+// 			board[i] = strins[i].toCharArray();
+// 			System.out.println(Arrays.toString(board[i]));
+// 		}
 
-		Q036_ValidSudoku2 q = new Q036_ValidSudoku2();
-		boolean b = q.isValidSudoku(board);
-		System.out.println(b);
+// 		Q036_ValidSudoku2 q = new Q036_ValidSudoku2();
+// 		boolean b = q.isValidSudoku(board);
+// 		System.out.println(b);
 
-	}
+// 	}
 }
