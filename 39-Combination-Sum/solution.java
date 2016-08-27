@@ -1,38 +1,27 @@
 public class Solution {
-   	public List<List<Integer>> combinationSum(int[] candidates, int target) {
-		Arrays.sort(candidates);
-		List<List<Integer>> lists = new ArrayList<>();
+   public List<List<Integer>> combinationSum(int[] candidates, int target) {
 
+		List<List<Integer>> lists = new ArrayList<>();
 		List<Integer> list = new ArrayList<>();
-		buildLists(lists, list, candidates, candidates.length - 1, target);
+		Arrays.sort(candidates);
+		builLists(candidates, 0, target, list, lists);
 		return lists;
 	}
 
-	public void buildLists(List<List<Integer>> lists, List<Integer> list, int[] arr, int index, int target) {
-
-		if (target < 0 || index < 0) {
+	public void builLists(int[] a, int i, int target, List<Integer> list, List<List<Integer>> lists) {
+		int cur = target-a[i];
+		List<Integer> newList = new ArrayList<>(list);
+		newList.add(a[i]);
+		if(cur == 0){
+			lists.add(newList);
+		}
+		else if(cur > 0){
 			return;
-		}
-
-		else if (target == 0) {
-			
-			lists.add(list);
 		} else {
-
-			// don't take current value
-			List<Integer> l1 = new ArrayList<>(list);
-			buildLists(lists, l1, arr, index - 1, target);
-
-			// take current
-			
-			List<Integer> l2 = new ArrayList<>(list);
-			l2.add(arr[index]);
-			buildLists(lists, l2, arr, index, target - arr[index]);
+			builLists(a,i,target, list, lists);
+			if(i<a.length-1)
+				builLists(a,i+1,target, list, lists);
 		}
-
-		// = 0: take cur or not
-		// < 0: not
-		// > 0: take cur or not
 	}
 
 }
