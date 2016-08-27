@@ -4,23 +4,24 @@ public class Solution {
 		List<List<Integer>> lists = new ArrayList<>();
 		List<Integer> list = new ArrayList<>();
 		Arrays.sort(candidates);
-		builLists(candidates, 0, target, list, lists);
+		
+		builLists(candidates, candidates.length - 1, target, list, lists);
 		return lists;
 	}
 
 	public void builLists(int[] a, int i, int target, List<Integer> list, List<List<Integer>> lists) {
-		int cur = target-a[i];
-		List<Integer> newList = new ArrayList<>(list);
-		newList.add(a[i]);
-		if(cur == 0){
-			lists.add(newList);
-		}
-		else if(cur < 0){
+		if (target < 0 || i < 0)
 			return;
+		if (target == 0) {
+			
+			lists.add(list);
 		} else {
-			builLists(a,i,target, list, lists);
-			if(i<a.length-1)
-				builLists(a,i+1,target, list, lists);
+			
+			List<Integer> nlist = new ArrayList<Integer>(list);
+			nlist.add(a[i]);
+			builLists(a, i, target-a[i], nlist,lists) ;
+			List<Integer> nlist2 = new ArrayList<Integer>(list);
+			builLists(a, i-1, target, nlist2,lists) ;
 		}
 	}
 
